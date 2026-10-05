@@ -17,6 +17,4 @@ Tested with Jac 0.37.23 in WSL on October 4, 2026.
 | Live microphone recognition/transcription | Needs human microphone test |
 | Device reminder delivery while closed | Needs native device test |
 
-Temporary browser/CLI QA data is identified separately from real user data and removed after verification. The assignment has not been submitted. Keys and local journal data are excluded from the public source repository. No site or mobile app was deployed.
-
 The full live integration rerun encountered a Gemini HTTP 503; the focused two-request regression then passed. Existing earlier full integration pass is retained above.

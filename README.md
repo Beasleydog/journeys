@@ -1,9 +1,9 @@
 # Journeys
 
-**A little further, every day.** A personal planning app built in Jac 0.37.23 with a shared server, web app, native mobile app, and CLI.
+A personal planning app built in Jac 0.37.23 with a shared server, web app, native mobile app, and CLI.
 
-**Author:** Sam Schneider  
-**UMID:** 20371995. The assignment has not been submitted.
+**Author:** Sam Schneider
+**UMID:** 20371995
 
 ## What it does
 
@@ -30,9 +30,9 @@ cp .env.example .env    # only for a fresh checkout; preserve an existing .env
 jac run
 ```
 
-Open **http://localhost:8000** in Chrome or Edge. `jac run` starts the web app and server from the root, as required by the assignment. The development default includes hot reload; restart the server after backend changes. `jac run --no-dev` serves a prepared bundle.
+Open **http://localhost:8000** in Chrome or Edge. `jac run` starts the web app and server from the root. The development default includes hot reload; restart the server after backend changes. `jac run --no-dev` serves a prepared bundle.
 
-Each checkout needs a `.env` with its own Gemini API key. Credentials and local journal data are excluded from Git and are never included in the exported application bundle. The configured model is `gemini-3.1-flash-lite`; Google offers a free tier subject to account quotas. No billing settings have been changed. Manual journeys and logging work without Gemini.
+Each checkout needs a `.env` with its own Gemini API key. Credentials and local journal data are excluded from Git and are never included in the exported application bundle. The configured model is `gemini-3.1-flash-lite`; Google offers a free tier subject to account quotas. Manual journeys and logging work without Gemini.
 
 The server is bound to `127.0.0.1` by default. This is a single-person local journal without login; keep it local. Planning data persists in `data/journeys.sqlite3`. Back up that file or export your journal. `JOURNEYS_DB` can select another SQLite file for tests or demos.
 
@@ -76,9 +76,9 @@ jac run --dev mobile       # Expo/Metro; use the printed device instructions
 jac build --platform android mobile
 ```
 
-Jac provisions its managed JDK and Android tools. Native Android requires Android SDK licenses; the initial build stopped at this consent step. The mobile screens and native JavaScript compilation have been exercised, but notification delivery must also be tested on a device.
+Jac provisions its managed JDK and Android tools. Android setup requires accepting the SDK licenses. See `TESTING.md` for mobile verification status.
 
-For a phone, the backend must be reachable from that phone. For LAN testing, explicitly run the server with `jac run --host 0.0.0.0` on your trusted network and use the dev host/port printed by Jac. WSL/Windows port forwarding or firewall setup may be needed. Do not publish this unauthenticated personal server. iOS builds require macOS/Xcode or a separately configured hosted builder; no store submission or EAS upload is performed.
+For a phone, the backend must be reachable from that phone. For LAN testing, explicitly run the server with `jac run --host 0.0.0.0` on your trusted network and use the dev host/port printed by Jac. WSL/Windows port forwarding or firewall setup may be needed. Do not publish this unauthenticated personal server. iOS builds require macOS/Xcode or a separately configured hosted builder.
 
 On the **reminders** tab choose an hour and minute, then enable notifications. Scheduling uses `expo-notifications`; preferences use `expo-secure-store`. Enabling schedules the next seven days. Each refresh or mobile check-in replaces only Journeys reminders, omitting already recorded dates. Pausing a journey removes its reminders after sync. Turn reminders off/on after changing the time. Check-ins made on web or CLI require the mobile app to refresh before their pending notification is cancelled. Reopen the app periodically to extend its seven-day schedule. Device power restrictions can delay local delivery.
 
@@ -129,5 +129,3 @@ Jac CLI ──────────┘          │
 ```
 
 `core.jac` owns validation, persistence, daily calculations and Gemini calls. `web.jac` owns the browser interaction. `mobile/main.jac` uses native UI primitives and platform-specific reminder modules. `cli/main.jac` provides terminal workflows. `jac.toml` declares the workspace and selects the web app as the default. The API key remains entirely server-side.
-
-The project prioritizes a coherent daily loop: a tiny achievable plan, low-friction reflection, accurate reviewed records, visual momentum, and a history worth returning to.
